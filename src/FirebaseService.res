@@ -10,5 +10,5 @@ let liveOptions: FirebaseApp.options = {
   measurementId: "G-L97PBG6ZXD",
 }
 
-let app = () => liveOptions->Firebase.FirebaseApp.make
+let app = () => liveOptions->FirebaseApp.make
 let store = () => app()->Firebase.Firestore.make
