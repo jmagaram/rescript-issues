@@ -16,7 +16,7 @@
   "bs-dependencies": ["rescript-struct"],
   "gentypeconfig": {
     "language": "typescript",
-    "shims": {},
+    "shims": { "Js": "Js" },
     "generatedFileExtension": ".gen.tsx",
     "module": "es6",
     "debug": {

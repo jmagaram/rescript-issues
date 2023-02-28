@@ -280,7 +280,7 @@ import type {User as $$Auth_User_t} from 'firebase/auth';
 
 import type {WriteBatch as $$Firestore_writeBatch} from 'firebase/firestore';
 
-import type {undefined as Js_undefined} from './Js.gen';
+import type {undefined as Js_undefined} from '../src/shims/Js.shim';
 
 // tslint:disable-next-line:interface-over-type-literal
 export type unsubscribe = () => void;
