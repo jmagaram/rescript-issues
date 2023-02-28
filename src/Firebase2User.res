@@ -1,4 +1,4 @@
-open Firebase
+open Firebase2
 
 let liveOptions: FirebaseApp.options = {
   projectId: "admin-panel",
