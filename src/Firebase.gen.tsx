@@ -6,10 +6,6 @@ import {initializeApp as initializeAppNotChecked} from 'firebase/app';
 
 import {deleteApp as deleteAppNotChecked} from 'firebase/app';
 
-import {getAnalytics as getAnalyticsNotChecked} from 'firebase/analytics';
-
-import {setAnalyticsCollectionEnabled as setAnalyticsCollectionEnabledNotChecked} from 'firebase/analytics';
-
 import {getFirestore as getFirestoreNotChecked} from 'firebase/firestore';
 
 import {connectFirestoreEmulator as connectFirestoreEmulatorNotChecked} from 'firebase/firestore';
@@ -75,18 +71,6 @@ export const deleteAppTypeChecked: (_1:FirebaseApp_t) => Promise<void> = deleteA
 
 // Export 'deleteApp' early to allow circular import from the '.bs.js' file.
 export const deleteApp: unknown = deleteAppTypeChecked as (_1:FirebaseApp_t) => Promise<void>;
-
-// In case of type error, check the type of 'getAnalytics' in 'Firebase.re' and 'firebase/analytics'.
-export const getAnalyticsTypeChecked: (_1:Js_undefined<FirebaseApp_t>) => Analytics_t = getAnalyticsNotChecked;
-
-// Export 'getAnalytics' early to allow circular import from the '.bs.js' file.
-export const getAnalytics: unknown = getAnalyticsTypeChecked as (_1:Js_undefined<FirebaseApp_t>) => Analytics_t;
-
-// In case of type error, check the type of 'setAnalyticsCollectionEnabled' in 'Firebase.re' and 'firebase/analytics'.
-export const setAnalyticsCollectionEnabledTypeChecked: (_1:Analytics_t, _2:boolean) => void = setAnalyticsCollectionEnabledNotChecked;
-
-// Export 'setAnalyticsCollectionEnabled' early to allow circular import from the '.bs.js' file.
-export const setAnalyticsCollectionEnabled: unknown = setAnalyticsCollectionEnabledTypeChecked as (_1:Analytics_t, _2:boolean) => void;
 
 // In case of type error, check the type of 'getFirestore' in 'Firebase.re' and 'firebase/firestore'.
 export const getFirestoreTypeChecked: (_1:FirebaseApp_t) => Firestore_t = getFirestoreNotChecked;
@@ -250,8 +234,6 @@ export const signInAnonymouslyTypeChecked: (_1:Auth_t) => Promise<Auth_UserCrede
 // Export 'signInAnonymously' early to allow circular import from the '.bs.js' file.
 export const signInAnonymously: unknown = signInAnonymouslyTypeChecked as (_1:Auth_t) => Promise<Auth_UserCredential_t>;
 
-import type {Analytics as $$Analytics_t} from 'firebase/analytics';
-
 import type {Auth as $$Auth_t} from 'firebase/auth';
 
 import type {CollectionReference as $$Firestore_collectionReference} from 'firebase/firestore';
@@ -299,9 +281,6 @@ export type FirebaseApp_options = {
   readonly appId?: string; 
   readonly measurementId?: string
 };
-
-// tslint:disable-next-line:interface-over-type-literal
-export type Analytics_t = $$Analytics_t;
 
 // tslint:disable-next-line:interface-over-type-literal
 export type Firestore_t = $$Firestore_t;

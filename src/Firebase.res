@@ -24,28 +24,6 @@ module FirebaseApp = {
   external delete: t => promise<unit> = "deleteApp"
 }
 
-module Analytics = {
-  @gentype.import("firebase/analytics") @genType.as("Analytics")
-  type t
-
-  @gentype.import("firebase/analytics")
-  external _make: Js.undefined<FirebaseApp.t> => t = "getAnalytics"
-
-  @gentype.import("firebase/analytics")
-  external _setAnalyticsCollectionEnabled: (t, bool) => unit = "setAnalyticsCollectionEnabled"
-
-  let make = (app, ~enabled) => {
-    let analytics = _make(Js.Undefined.return(app))
-    _setAnalyticsCollectionEnabled(analytics, enabled)
-    analytics
-  }
-
-  let setEnabled = (t, ~isEnabled) => {
-    _setAnalyticsCollectionEnabled(t, isEnabled)
-    t
-  }
-}
-
 module Firestore = {
   @gentype.import("firebase/firestore") @genType.as("Firestore")
   type t
