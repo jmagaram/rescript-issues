@@ -6,4 +6,5 @@ let liveOptions: FirebaseApp.options = {
 }
 
 let app = liveOptions->FirebaseApp.make
-let store = app->Firestore.make
+let store1 = app->Firestore.make
+let store2 = app->Firestore.customMake
