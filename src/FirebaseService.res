@@ -11,6 +11,4 @@ let liveOptions: FirebaseApp.options = {
 }
 
 let app = () => liveOptions->Firebase.FirebaseApp.make
-
-@genType
 let store = () => app()->Firebase.Firestore.make
