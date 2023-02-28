@@ -35,7 +35,7 @@ module Analytics = {
   external _setAnalyticsCollectionEnabled: (t, bool) => unit = "setAnalyticsCollectionEnabled"
 
   let make = (app, ~enabled) => {
-    let analytics = _make(Undefined.make(app))
+    let analytics = _make(Js.Undefined.return(app))
     _setAnalyticsCollectionEnabled(analytics, enabled)
     analytics
   }
@@ -269,14 +269,14 @@ module Firestore = {
     let make = (collectionRef, filters) => {
       switch filters->Array.length {
       | 0 => query0(collectionRef)
-      | 1 => query1(collectionRef, filters->Array.getUnsafe(0))
-      | 2 => query2(collectionRef, filters->Array.getUnsafe(0), filters->Array.getUnsafe(1))
+      | 1 => query1(collectionRef, filters->Array.unsafe_get(0))
+      | 2 => query2(collectionRef, filters->Array.unsafe_get(0), filters->Array.unsafe_get(1))
       | 3 =>
         query3(
           collectionRef,
-          filters->Array.getUnsafe(0),
-          filters->Array.getUnsafe(1),
-          filters->Array.getUnsafe(2),
+          filters->Array.unsafe_get(0),
+          filters->Array.unsafe_get(1),
+          filters->Array.unsafe_get(2),
         )
       | _ => Js.Exn.raiseError("Unexpected number of filters")
       }
@@ -359,14 +359,14 @@ module Auth = {
 
   @gentype.import("firebase/auth")
   external _getAuth: Js.undefined<FirebaseApp.t> => t = "getAuth"
-  let getAuth = app => _getAuth(app->Undefined.make)
+  let getAuth = app => _getAuth(app->Js.Undefined.return)
 
   @gentype.import("firebase/auth")
   external _connectAuthEmulator: (t, string, Js.undefined<emulatorOptions>) => unit =
     "connectAuthEmulator"
 
   let useEmulator = (auth, ~url, ~disableWarnings) => {
-    _connectAuthEmulator(auth, url, {disableWarnings: disableWarnings}->Undefined.make)
+    _connectAuthEmulator(auth, url, {disableWarnings: disableWarnings}->Js.Undefined.return)
     auth
   }
 
@@ -382,7 +382,7 @@ module Auth = {
     @get external getUid: t => string = "uid"
     @send external deleteUser: t => promise<unit> = "delete"
     @send external reloadUser: t => promise<unit> = "reload"
-    @send external convertUserToJson: t => JSON.t = "toJSON"
+    @send external convertUserToJson: t => Js.Json.t = "toJSON"
   }
 
   module UserCredential = {
